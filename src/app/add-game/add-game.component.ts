@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Game} from '../entities/game';
+import {GameService} from '../services/game.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-game',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddGameComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  developer: string;
+  publisher: string;
+  release_date: Date;
+
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  addGame() {
+    this.gameService.addGame(this.title, this.developer, this.publisher, this.release_date).subscribe(res => {
+      this.router.navigate(['/']);
+    })
   }
 
 }

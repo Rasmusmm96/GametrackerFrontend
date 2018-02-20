@@ -14,4 +14,9 @@ export class GameService {
     return this.http.get<Game[]>(this.api);
   }
 
+  addGame(title: string, developer: string, publisher: string, release_date: Date): Observable<boolean> {
+    let attrs = "/add/" + title + "/" + developer + "/" + publisher + "/" + release_date;
+    return this.http.post<boolean>(this.api + attrs, null);
+  }
+
 }

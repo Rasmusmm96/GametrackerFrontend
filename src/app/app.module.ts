@@ -8,6 +8,7 @@ import {GameService} from './services/game.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AddGameComponent } from './add-game/add-game.component';
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [
     GameService

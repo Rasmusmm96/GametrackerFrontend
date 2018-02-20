@@ -1,0 +1,20 @@
+<table class="table table-light">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Title</th>
+    <th scope="col">Developer</th>
+    <th scope="col">Publisher</th>
+    <th scope="col">Release date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let game of games | async">
+    <th scope="row">{{game.ID}}</th>
+    <td>{{game.Title}}</td>
+    <td>{{game.Developer}}</td>
+    <td>{{game.Publisher}}</td>
+    <td>{{game.Release_Date}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -10,13 +10,21 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
+  addGame(title: string, developer: string, publisher: string, release_date: Date): Observable<boolean> {
+    let attrs = "/add/" + title + "/" + developer + "/" + publisher + "/" + release_date;
+    return this.http.post<boolean>(this.api + attrs, null);
+  }
+
   getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.api);
   }
 
-  addGame(title: string, developer: string, publisher: string, release_date: Date): Observable<boolean> {
-    let attrs = "/add/" + title + "/" + developer + "/" + publisher + "/" + release_date;
-    return this.http.post<boolean>(this.api + attrs, null);
+  getGame(id: number): Observable<Game> {
+    return this.http.get<Game>(this.api + "/" + id);
+  }
+
+  deleteGame(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.api + "/delete/" + id);
   }
 
 }

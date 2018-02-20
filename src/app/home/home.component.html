@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let game of games | async">
+    <tr class="pointer" *ngFor="let game of games | async" (click)="openGame(game)">
       <td>{{game.Title}}</td>
       <td>{{game.Developer}}</td>
       <td>{{game.Publisher}}</td>

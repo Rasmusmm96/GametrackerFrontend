@@ -9,10 +9,13 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AddGameComponent } from './add-game/add-game.component';
 import {FormsModule} from '@angular/forms';
+import { GameComponent } from './game/game.component';
+import {Game} from './entities/game';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'addgame', component: AddGameComponent }
+  { path: 'addgame', component: AddGameComponent },
+  { path: 'game/:id', component: GameComponent }
 ];
 
 
@@ -21,7 +24,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     ToolbarComponent,
-    AddGameComponent
+    AddGameComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

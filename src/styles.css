@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url("http://cdn.akamai.steamstatic.com/steam/apps/220/page_bg_generated_v6b.jpg?t=1515390717");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.center {
+  display: flex;
+  margin: 0 auto;
+}

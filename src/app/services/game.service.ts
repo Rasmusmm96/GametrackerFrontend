@@ -6,13 +6,14 @@ import {Game} from '../entities/game';
 @Injectable()
 export class GameService {
 
-  private api = 'http://localhost:8888/api.php/games';
+  private api = 'http://localhost:8888/GametrackerPublicBackend/api.php/games';
+  private apiAdmin = 'http://localhost:8888/GametrackerAdminBackend/api.php/games';
 
   constructor(private http: HttpClient) { }
 
   addGame(title: string, developer: string, publisher: string, release_date: Date): Observable<boolean> {
     let attrs = "/add/" + title + "/" + developer + "/" + publisher + "/" + release_date;
-    return this.http.post<boolean>(this.api + attrs, null);
+    return this.http.post<boolean>(this.apiAdmin + attrs, null);
   }
 
   getGames(): Observable<Game[]> {
@@ -25,11 +26,11 @@ export class GameService {
 
   updateGame(game: Game): Observable<boolean> {
     let attrs = "/update/" + game.ID + "/" + game.Title + "/" + game.Developer + "/" + game.Publisher + "/" + game.Release_Date;
-    return this.http.put<boolean>(this.api + attrs, null);
+    return this.http.put<boolean>(this.apiAdmin + attrs, null);
   }
 
   deleteGame(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(this.api + "/delete/" + id);
+    return this.http.delete<boolean>(this.apiAdmin + "/delete/" + id);
   }
 
 }

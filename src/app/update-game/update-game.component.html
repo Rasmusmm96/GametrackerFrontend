@@ -1,0 +1,27 @@
+<app-toolbar></app-toolbar>
+<div class="card formcard" *ngIf="game">
+  <div class="card-body">
+    <h5 class="card-title">
+      Update game: {{game.Title}}
+    </h5>
+    <form>
+      <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="game.Title" name="title" class="form-control" placeholder="Enter title">
+      </div>
+      <div class="form-group">
+        <label>Developer</label>
+        <input [(ngModel)]="game.Developer" name="developer" class="form-control" placeholder="Enter developer">
+      </div>
+      <div class="form-group">
+        <label>Publisher</label>
+        <input [(ngModel)]="game.Publisher" name="publisher" class="form-control" placeholder="Enter publisher">
+      </div>
+      <div class="form-group">
+        <label>Release date</label>
+        <input [(ngModel)]="game.Release_Date" name="release_date" type="date" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="updateGame()">Submit</button>
+    </form>
+  </div>
+</div>

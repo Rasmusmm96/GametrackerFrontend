@@ -23,6 +23,11 @@ export class GameService {
     return this.http.get<Game>(this.api + "/" + id);
   }
 
+  updateGame(id: number, title: string, developer: string, publisher: string, release_date: Date): Observable<boolean> {
+    let attrs = "/update/" + id + "/" + title + "/" + developer + "/" + publisher + "/" + release_date;
+    return this.http.put<boolean>(this.api + attrs, null);
+  }
+
   deleteGame(id: number): Observable<boolean> {
     return this.http.delete<boolean>(this.api + "/delete/" + id);
   }

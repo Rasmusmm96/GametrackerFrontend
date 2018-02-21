@@ -23,6 +23,10 @@ export class GameComponent implements OnInit {
     })
   }
 
+  updateGame() {
+    this.router.navigate(['updategame/' + this.game.ID]);
+  }
+
   deleteGame() {
     this.gameService.deleteGame(this.game.ID).subscribe(res => {
       this.router.navigate(['/']);

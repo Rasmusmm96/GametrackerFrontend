@@ -11,10 +11,13 @@ import { AddGameComponent } from './add-game/add-game.component';
 import {FormsModule} from '@angular/forms';
 import { GameComponent } from './game/game.component';
 import {Game} from './entities/game';
+import { UpdateGameComponent } from './update-game/update-game.component';
+import {DatePipe} from '@angular/common';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'addgame', component: AddGameComponent },
+  { path: 'updategame/:id', component: UpdateGameComponent },
   { path: 'game/:id', component: GameComponent }
 ];
 
@@ -25,7 +28,8 @@ const routes: Routes = [
     HomeComponent,
     ToolbarComponent,
     AddGameComponent,
-    GameComponent
+    GameComponent,
+    UpdateGameComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,8 @@ const routes: Routes = [
     FormsModule
   ],
   providers: [
-    GameService
+    GameService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

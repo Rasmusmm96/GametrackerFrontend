@@ -23,8 +23,8 @@ export class GameService {
     return this.http.get<Game>(this.api + "/" + id);
   }
 
-  updateGame(id: number, title: string, developer: string, publisher: string, release_date: Date): Observable<boolean> {
-    let attrs = "/update/" + id + "/" + title + "/" + developer + "/" + publisher + "/" + release_date;
+  updateGame(game: Game): Observable<boolean> {
+    let attrs = "/update/" + game.ID + "/" + game.Title + "/" + game.Developer + "/" + game.Publisher + "/" + game.Release_Date;
     return this.http.put<boolean>(this.api + attrs, null);
   }
 

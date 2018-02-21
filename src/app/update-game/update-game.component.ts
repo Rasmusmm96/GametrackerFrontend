@@ -24,14 +24,9 @@ export class UpdateGameComponent implements OnInit {
   }
 
   updateGame() {
-    this.gameService.updateGame(this.game.ID,
-                                this.game.Title,
-                                this.game.Developer,
-                                this.game.Publisher,
-                                this.game.Release_Date)
-                                .subscribe(res => {
-                                  this.router.navigate(['/game/' + this.game.ID]);
-                                })
+    this.gameService.updateGame(this.game).subscribe(res => {
+      this.router.navigate(['/game/' + this.game.ID]);
+    });
   }
 
 }

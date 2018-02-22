@@ -13,9 +13,12 @@ import { GameComponent } from './game/game.component';
 import {Game} from './entities/game';
 import { UpdateGameComponent } from './update-game/update-game.component';
 import {DatePipe} from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import {AdminService} from './services/admin.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent},
   { path: 'addgame', component: AddGameComponent },
   { path: 'updategame/:id', component: UpdateGameComponent },
   { path: 'game/:id', component: GameComponent }
@@ -29,7 +32,8 @@ const routes: Routes = [
     ToolbarComponent,
     AddGameComponent,
     GameComponent,
-    UpdateGameComponent
+    UpdateGameComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ const routes: Routes = [
   ],
   providers: [
     GameService,
-    DatePipe
+    DatePipe,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

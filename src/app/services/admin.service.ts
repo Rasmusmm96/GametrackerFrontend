@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
+import {isNullOrUndefined} from 'util';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable()
 export class AdminService {
@@ -30,6 +32,23 @@ export class AdminService {
     let headers = new HttpHeaders();
     headers = headers.append('Token', localStorage.getItem('GameTrackerToken'));
     return headers;
+  }
+
+  static isAdminLoggedIn() {
+    let token = localStorage.getItem('GameTrackerToken');
+    let jwt = new JwtHelperService('');
+    if (!isNullOrUndefined(token)) {
+      if (!jwt.isTokenExpired(token)) {
+        return true;
+      } else {
+        this.logout();
+      }
+    }
+    return false;
+  }
+
+  static logout() {
+    localStorage.removeItem('GameTrackerToken');
   }
 
 }

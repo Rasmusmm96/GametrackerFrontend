@@ -3,6 +3,7 @@ import {Game} from '../entities/game';
 import {GameService} from '../services/game.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/take';
+import {AdminService} from '../services/admin.service';
 
 @Component({
   selector: 'app-game',
@@ -12,6 +13,7 @@ import 'rxjs/add/operator/take';
 export class GameComponent implements OnInit {
 
   game: Game;
+  isAdminLoggedIn: boolean = AdminService.isAdminLoggedIn();
 
   constructor(private gameService: GameService, private route: ActivatedRoute, private router: Router) { }
 

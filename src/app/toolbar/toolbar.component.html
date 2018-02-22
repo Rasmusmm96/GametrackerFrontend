@@ -5,9 +5,16 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul *ngIf="isAdminLoggedIn" class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/addgame">Add game</a>
+      </li>
+    </ul>
+    <span class="fill-remaining-space"></span>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <button *ngIf="!isAdminLoggedIn" type="button" class="btn btn-outline-success" routerLink="/login">Login</button>
+        <button *ngIf="isAdminLoggedIn" type="button" class="btn btn-outline-danger" (click)="logout()">Logout</button>
       </li>
     </ul>
   </div>

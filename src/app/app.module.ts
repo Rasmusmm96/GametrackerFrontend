@@ -15,12 +15,14 @@ import { UpdateGameComponent } from './update-game/update-game.component';
 import {DatePipe} from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import {AdminService} from './services/admin.service';
+import {AdminGuard} from './guards/admin.guard';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'addgame', component: AddGameComponent },
-  { path: 'updategame/:id', component: UpdateGameComponent },
+  { path: 'addgame', component: AddGameComponent , canActivate: [AdminGuard]},
+  { path: 'updategame/:id', component: UpdateGameComponent , canActivate: [AdminGuard]},
   { path: 'game/:id', component: GameComponent }
 ];
 
@@ -44,7 +46,9 @@ const routes: Routes = [
   providers: [
     GameService,
     DatePipe,
-    AdminService
+    AdminService,
+    AdminGuard,
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

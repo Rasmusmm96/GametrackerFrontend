@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../services/admin.service';
-import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +12,14 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private adminService: AdminService, private router: Router) { }
+  constructor(private adminService: AdminService, private location: Location) { }
 
   ngOnInit() {
   }
 
   login() {
     this.adminService.login(this.username, this.password).subscribe(res => {
-      this.router.navigate(['/']);
+      this.location.back();
     });
   }
 

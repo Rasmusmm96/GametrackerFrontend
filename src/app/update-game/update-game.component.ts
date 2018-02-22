@@ -12,6 +12,7 @@ import {DatePipe} from '@angular/common';
 export class UpdateGameComponent implements OnInit {
 
   game: Game;
+  gameTitle: string;
 
   constructor(private route: ActivatedRoute, private gameService: GameService, private datepipe: DatePipe, private router: Router) { }
 
@@ -19,6 +20,7 @@ export class UpdateGameComponent implements OnInit {
     this.route.params.take(1).subscribe(params => {
       this.gameService.getGame(params['id']).subscribe(game => {
         this.game = game;
+        this.gameTitle = game.Title;
       })
     })
   }

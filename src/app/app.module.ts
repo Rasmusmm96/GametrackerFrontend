@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import {AdminService} from './services/admin.service';
 import {AdminGuard} from './guards/admin.guard';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {Ng4TwitterTimelineModule} from 'ng4-twitter-timeline/lib';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    Ng4TwitterTimelineModule
   ],
   providers: [
     GameService,

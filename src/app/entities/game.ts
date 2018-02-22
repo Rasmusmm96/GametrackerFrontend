@@ -4,4 +4,6 @@ export class Game {
   Developer: string;
   Publisher: string;
   Release_Date: Date;
+  Twitter_Handle: string;
+  Youtube_Id: string;
 }

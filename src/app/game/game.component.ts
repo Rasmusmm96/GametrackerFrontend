@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Game} from '../entities/game';
 import {GameService} from '../services/game.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/take';
 import {AdminService} from '../services/admin.service';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {Ng4TwitterTimelineService} from 'ng4-twitter-timeline/lib';
 
 @Component({
   selector: 'app-game',
@@ -15,12 +17,14 @@ export class GameComponent implements OnInit {
   game: Game;
   isAdminLoggedIn: boolean = AdminService.isAdminLoggedIn();
 
-  constructor(private gameService: GameService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private gameService: GameService, private route: ActivatedRoute, private router: Router,
+              private sanatizer: DomSanitizer, private ng4TwitterTimelineService: Ng4TwitterTimelineService) { }
 
   ngOnInit() {
     this.route.params.take(1).subscribe(params => {
       this.gameService.getGame(params['id']).subscribe(game => {
         this.game = game;
+        console.log(this.game);
       })
     })
   }
@@ -33,6 +37,14 @@ export class GameComponent implements OnInit {
     this.gameService.deleteGame(this.game.ID).subscribe(res => {
       this.router.navigate(['/']);
     })
+  }
+
+  protected youtubeUrl() : SafeUrl {
+    return this.sanatizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.game.Youtube_Id);
+  }
+
+  protected twitterUrl() : string {
+    return 'https://twitter.com/' + this.game.Twitter_Handle;
   }
 
 }

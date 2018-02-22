@@ -1,4 +1,13 @@
 .card {
   margin-top: 30px;
-  max-width: 400px;
+  min-width: 330px;
+}
+
+.youtube {
+  margin-top: 30px;
+  min-width: 330px;
+}
+
+.twitter {
+  margin-top: 30px;
 }

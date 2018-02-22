@@ -1,16 +1,30 @@
 <app-toolbar></app-toolbar>
-<div class="card center" *ngIf="game">
-  <div class="card-body">
-    <h5 class="card-title">
-      {{game.Title}}
-    </h5>
-    <p class="card-text">
-      Developer: {{game.Developer}}<br>
-      Publisher: {{game.Publisher}}<br>
-      Release date: {{game.Release_Date | date:'dd-MMM-yyyy'}}<br>
-    </p>
-    <button *ngIf="isAdminLoggedIn" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-    <button *ngIf="isAdminLoggedIn" class="btn btn-primary" (click)="updateGame()">Update</button>
+<div class="container" *ngIf="game">
+  <div class="row">
+    <div class="col">
+      <div class="card center">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{game.Title}}
+          </h5>
+          <p class="card-text">
+            Developer: {{game.Developer}}<br>
+            Publisher: {{game.Publisher}}<br>
+            Release date: {{game.Release_Date | date:'dd-MMM-yyyy'}}<br>
+          </p>
+          <button *ngIf="isAdminLoggedIn" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+          <button *ngIf="isAdminLoggedIn" class="btn btn-primary" (click)="updateGame()">Update</button>
+        </div>
+      </div>
+      <div class="youtube center">
+        <iframe width="538" height="303" [src]="youtubeUrl()" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col">
+      <div class="twitter">
+        <ng4-twitter-timeline [dataSrc]="{sourceType: 'profile',screenName: game.Twitter_Handle}"></ng4-twitter-timeline>
+      </div>
+    </div>
   </div>
 </div>
 

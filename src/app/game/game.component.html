@@ -2,7 +2,7 @@
 <div class="container" *ngIf="game">
   <div class="row">
     <div class="col">
-      <div class="card center">
+      <div class="card center" style="max-width: 538px">
         <div class="card-body">
           <h5 class="card-title">
             {{game.Title}}
@@ -16,11 +16,11 @@
           <button *ngIf="isAdminLoggedIn" class="btn btn-primary" (click)="updateGame()">Update</button>
         </div>
       </div>
-      <div class="youtube center">
+      <div *ngIf="game.Youtube_Id" class="youtube center">
         <iframe width="538" height="303" [src]="youtubeUrl()" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div class="col">
+    <div class="col" *ngIf="game.Twitter_Handle">
       <div class="twitter">
         <ng4-twitter-timeline [dataSrc]="{sourceType: 'profile',screenName: game.Twitter_Handle}"></ng4-twitter-timeline>
       </div>

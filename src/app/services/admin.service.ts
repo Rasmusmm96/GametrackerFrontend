@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHandler, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 import {isNullOrUndefined} from 'util';
@@ -23,9 +23,12 @@ export class AdminService {
   }
 
   addAdmin(username: string, password: string): Observable<boolean> {
-    let headers = AdminService.getTokenHeader();
-    headers = headers.append('Authorization', 'Basic: ' + btoa(username + ":" + password));
-    return this.http.post<boolean>(this.apiAdmin + '/add', null, {headers: headers});
+    let body = new HttpParams()
+      .set('username', username)
+      .set('password', password);
+    return this.http.post<boolean>(this.apiAdmin + '/add', body, {
+      headers: AdminService.getTokenHeader().append('Content-Type', 'application/x-www-form-urlencoded')
+    });
   }
 
   static getTokenHeader() {

@@ -14,6 +14,8 @@ export class AddGameComponent implements OnInit {
   developer: string;
   publisher: string;
   release_date: Date;
+  twitter_handle: string;
+  youtube_id: string;
 
   constructor(private gameService: GameService, private router: Router) { }
 
@@ -21,7 +23,14 @@ export class AddGameComponent implements OnInit {
   }
 
   addGame() {
-    this.gameService.addGame(this.title, this.developer, this.publisher, this.release_date).subscribe(res => {
+    this.gameService.addGame(
+      this.title,
+      this.developer,
+      this.publisher,
+      this.release_date,
+      this.twitter_handle,
+      this.youtube_id
+    ).subscribe(res => {
       this.router.navigate(['/']);
     })
   }

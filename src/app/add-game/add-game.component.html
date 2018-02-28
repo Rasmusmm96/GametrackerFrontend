@@ -21,6 +21,14 @@
         <label>Release date</label>
         <input [(ngModel)]="release_date" name="release_date" type="date" class="form-control">
       </div>
+      <div class="form-group">
+        <label>Twitter</label>
+        <input [(ngModel)]="twitter_handle" name="twitter_handle" class="form-control" placeholder="Enter Twitter handle">
+      </div>
+      <div class="form-group">
+        <label>Youtube ID</label>
+        <input [(ngModel)]="youtube_id" name="youtube_id" class="form-control" placeholder="Enter Youtube ID">
+      </div>
       <button type="submit" class="btn btn-primary" (click)="addGame()">Submit</button>
     </form>
   </div>

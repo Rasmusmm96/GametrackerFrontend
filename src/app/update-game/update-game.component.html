@@ -19,7 +19,19 @@
       </div>
       <div class="form-group">
         <label>Release date</label>
-        <input [(ngModel)]="game.Release_Date" name="release_date" type="date" class="form-control">
+        <input ([ngModel])="game.Release_Date" name="release_date" [disabled]="releaseDateNull" type="date" class="form-control">
+      </div>
+      <div class="form-check">
+        <input [(ngModel)]="releaseDateNull" name="releaseDateNull" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Release date is unknown</label>
+      </div>
+      <div class="form-group">
+        <label>Twitter</label>
+        <input [(ngModel)]="game.Twitter_Handle" name="Twitter_Handle" class="form-control" placeholder="Enter Twitter handle">
+      </div>
+      <div class="form-group">
+        <label>Youtube video</label>
+        <input [(ngModel)]="game.Youtube_Id" name="Youtube_Id" class="form-control" placeholder="Enter Youtube ID">
       </div>
       <button type="submit" class="btn btn-primary" (click)="updateGame()">Submit</button>
     </form>

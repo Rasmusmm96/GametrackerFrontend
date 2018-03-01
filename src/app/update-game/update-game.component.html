@@ -19,10 +19,10 @@
       </div>
       <div class="form-group">
         <label>Release date</label>
-        <input ([ngModel])="game.Release_Date" name="release_date" [disabled]="releaseDateNull" type="date" class="form-control">
+        <input ([ngModel])="game.Release_Date" name="release_date" [disabled]="isReleaseDateNull" type="date" class="form-control">
       </div>
       <div class="form-check">
-        <input [(ngModel)]="releaseDateNull" name="releaseDateNull" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <input [(ngModel)]="isReleaseDateNull" name="releaseDateNull" type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Release date is unknown</label>
       </div>
       <div class="form-group">

@@ -15,7 +15,7 @@ export class GameService {
   constructor(private http: HttpClient, private datepipe: DatePipe) { }
 
   addGame(title: string, developer: string, publisher: string, release_date: Date, twitter_handle: string, youtube_id: string): Observable<boolean> {
-    let release_date_new = null;
+    let release_date_new = '';
 
     if (!isNullOrUndefined(release_date)) {
       release_date_new = this.datepipe.transform(release_date, 'yyyy-MM-ddTHH:mm:ss');
@@ -42,7 +42,7 @@ export class GameService {
   }
 
   updateGame(game: Game): Observable<boolean> {
-    let release_date = null;
+    let release_date = '';
 
     if (!isNullOrUndefined(game.Release_Date)) {
       release_date = this.datepipe.transform(game.Release_Date, 'yyyy-MM-ddTHH:mm:ss');
@@ -64,5 +64,12 @@ export class GameService {
   deleteGame(id: number): Observable<boolean> {
     return this.http.delete<boolean>(this.apiAdmin + "/delete/" + id, {headers: AdminService.getTokenHeader()});
   }
+
+  static isReleaseDateNull(date: Date) {
+    let newDate = new Date(date);
+    return isNaN(newDate.getDate());
+  }
+
+
 
 }

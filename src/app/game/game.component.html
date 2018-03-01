@@ -10,7 +10,7 @@
           <p class="card-text">
             Developer: {{game.Developer}}<br>
             Publisher: {{game.Publisher}}<br>
-            Release date: {{game.Release_Date | date:'dd-MMM-yyyy'}}<br>
+            Release date: {{game.Release_Date | date:'dd MMM yyyy'}}
           </p>
           <button *ngIf="isAdminLoggedIn" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
           <button *ngIf="isAdminLoggedIn" class="btn btn-primary" (click)="updateGame()">Update</button>

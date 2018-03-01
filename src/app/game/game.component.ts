@@ -15,6 +15,8 @@ import {Ng4TwitterTimelineService} from 'ng4-twitter-timeline/lib';
 export class GameComponent implements OnInit {
 
   game: Game;
+  isReleaseDateNull: boolean;
+
   isAdminLoggedIn: boolean = AdminService.isAdminLoggedIn();
 
   constructor(private gameService: GameService, private route: ActivatedRoute, private router: Router,
@@ -24,6 +26,7 @@ export class GameComponent implements OnInit {
     this.route.params.take(1).subscribe(params => {
       this.gameService.getGame(params['id']).subscribe(game => {
         this.game = game;
+        this.isReleaseDateNull = GameService.isReleaseDateNull(game.Release_Date);
       })
     })
   }
